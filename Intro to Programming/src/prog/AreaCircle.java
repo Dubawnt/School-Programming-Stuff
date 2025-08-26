@@ -2,8 +2,8 @@ package prog;
 import java.util.Scanner;
 public class AreaCircle {
   public static void main(String[] args) {
-    // Create a Scanner object
-    Scanner input = new Scanner(System.in);
+    // Create a Scanner object with try-with-resources
+    try (Scanner input = new Scanner(System.in)) {
     
     // Prompt the user to enter a radius
     System.out.print("Enter a number for radius: ");
@@ -15,5 +15,6 @@ public class AreaCircle {
     // Display result
     System.out.println("The area for the circle of radius " +
       radius + " is " + area);
+    }
   } 
 }
