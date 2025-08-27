@@ -6,9 +6,9 @@ public class StandardQuadratics {
         // Create a Scanner object with try-with-resources
         try (Scanner input = new Scanner(System.in)) {
         	// Declare Variables
-        	Double a = 0.0;
-        	Double b = 0.0;	
-        	Double c = 0.0;
+        	double a = 0.0;
+        	double b = 0.0;	
+        	double c = 0.0;
             // Input for values of a,b,and c
             System.out.print("Enter the value of a for the standard form ax^2+bx+c: ");
             	String aInput = input.nextLine();
