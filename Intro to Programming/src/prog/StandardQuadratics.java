@@ -19,20 +19,20 @@ public class StandardQuadratics {
 
             if (discriminant > 0) {
                 // Two zeros
-                double Zero1 = (-b + Math.sqrt(discriminant)) / (2 * a);
-                double Zero2 = (-b - Math.sqrt(discriminant)) / (2 * a);
-                System.out.println("The zeros of the equation are " + Zero1 + " and " + Zero2);
+                double zero1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                double zero2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                System.out.println("The zeros of the equation are " + zero1 + " and " + zero2);
             } else if (discriminant == 0) {
                 // One zero
-                double Zero = -b / (2 * a);
-                System.out.println("The zero of the equation is " + Zero);
+                double zero = -b / (2 * a);
+                System.out.println("The zero of the equation is " + zero);
             } else {
                 // Complex zeros
-                double realPart = -b / (2 * a);
-                double imaginaryPart = Math.sqrt(-discriminant) / (2 * a);
+                double real = -b / (2 * a);
+                double imaginary = Math.sqrt(-discriminant) / (2 * a);
                 System.out.println("The equation has complex zeros:");
-                System.out.println("Zero1 = " + realPart + " + " + imaginaryPart + "i");
-                System.out.println("Zero2 = " + realPart + " - " + imaginaryPart + "i");
+                System.out.println("Zero1 = " + real + " + " + imaginary + "i");
+                System.out.println("Zero2 = " + real + " - " + imaginary + "i");
             }
         }
     }
