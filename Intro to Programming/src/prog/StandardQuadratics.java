@@ -5,19 +5,32 @@ public class StandardQuadratics {
     public static void main(String[] args) {
         // Create a Scanner object with try-with-resources
         try (Scanner input = new Scanner(System.in)) {
-
+        	// Declare Variables
+        	Double a = 0.0;
+        	Double b = 0.0;	
+        	Double c = 0.0;
             // Input for values of a,b,and c
             System.out.print("Enter the value of a for the standard form ax^2+bx+c: ");
-            double a = input.nextDouble();
-            if (a == 0) {
-            	System.out.println("This is not a quadratic.");
-            	System.exit(0);
-            }
-            System.out.print("Enter the value of b for the standard form ax^2+bx+c: ");
-            double b = input.nextDouble();
-            System.out.print("Enter the value of c for the standard form ax^2+bx+c: ");
-            double c = input.nextDouble();
-
+            	String aInput = input.nextLine();
+            	System.out.print("Enter the value of b for the standard form ax^2+bx+c: ");
+            	String bInput = input.nextLine();
+            	System.out.print("Enter the value of c for the standard form ax^2+bx+c: ");
+            	String cInput = input.nextLine();
+            // Test inputs for exceptions
+           try {
+        	   a = Double.parseDouble(aInput);
+        	   b = Double.parseDouble(bInput);
+        	   c = Double.parseDouble(cInput);
+           }	
+           catch(NumberFormatException e) {
+        	   System.out.println("Invalid input! Please use numbers.");
+        	   System.exit(0);
+           }
+            // Test case not quadratic
+           	if ( a == 0) {
+           	System.out.println("This is not a quadratic.");
+           	System.exit(0);
+           	}
             // Calculate discriminant
             double discriminant = Math.pow(b, 2) - (4 * a * c);
 
