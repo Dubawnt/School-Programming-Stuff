@@ -36,8 +36,8 @@ public class StandardQuadratics {
 
             if (discriminant > 0) {
                 // Two zeros
-                double zero1 = (-b + Math.sqrt(discriminant)) / (2 * a);
-                double zero2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                double zero1 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                double zero2 = (-b + Math.sqrt(discriminant)) / (2 * a);
                 System.out.println("The zeros of the equation are " + zero1 + " and " + zero2);
             } else if (discriminant == 0) {
                 // One zero
@@ -48,8 +48,16 @@ public class StandardQuadratics {
                 double real = -b / (2 * a);
                 double imaginary = Math.sqrt(-discriminant) / (2 * a);
                 System.out.println("The equation has complex zeros:");
-                System.out.println("Zero1 = " + real + " + " + imaginary + "i");
-                System.out.println("Zero2 = " + real + " - " + imaginary + "i");
+                //check for extraneous zeros in real
+                if (real != 0) {
+                	System.out.println("Zero1 = " + real + " - " + imaginary + "i");
+                	System.out.println("Zero2 = " + real + " + " + imaginary + "i");
+                }
+                else {
+                    System.out.println(" - " + imaginary + "i");
+                    System.out.println(" + " + imaginary + "i");               	
+                }
+                
             }
         }
     }
