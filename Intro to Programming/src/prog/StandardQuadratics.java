@@ -9,6 +9,10 @@ public class StandardQuadratics {
             // Input for values of a,b,and c
             System.out.print("Enter the value of a for the standard form ax^2+bx+c: ");
             double a = input.nextDouble();
+            if (a == 0) {
+            	System.out.println("This is not a quadratic.");
+            	System.exit(0);
+            }
             System.out.print("Enter the value of b for the standard form ax^2+bx+c: ");
             double b = input.nextDouble();
             System.out.print("Enter the value of c for the standard form ax^2+bx+c: ");
