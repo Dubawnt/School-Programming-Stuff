@@ -7,17 +7,22 @@ public class CoordinateSlope {
 		//create a scanner object
 		try (Scanner input = new Scanner(System.in)) {
 		
-			//Input Values
+		//Inputs1
+		double x1 = 0;
+		double x2 = 0;
+		double y1 = 0;
+		double y2 = 0;
+		
 			System.out.print("Enter the x-value of the first point: ");
-			double x1 = input.nextDouble();
+			x1 = input.nextDouble();
 			System.out.print("Enter the y-value of the first point: ");
-			double y1 = input.nextDouble();
+			y1 = input.nextDouble();
 			System.out.print("Enter the x-value of the second point: ");
-			double x2 = input.nextDouble();
+			x2 = input.nextDouble();
 			System.out.print("Enter the y-value of the second point: ");
-			double y2 = input.nextDouble();
-			input.close();
+			y2 = input.nextDouble();
 			
+		
 			//calculate slope
 			double slope = ((y2 - y1) / (x2 - x1));
 			
