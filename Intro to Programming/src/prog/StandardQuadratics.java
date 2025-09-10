@@ -14,7 +14,7 @@ public class StandardQuadratics {
 		boolean valid1 = false;
 		boolean valid2 = false;
 
-		// Create a Scanner object with try-with-resources
+		// Create a Scanner object
 		Scanner input = new Scanner(System.in);
 		// Instruction
 		System.out.println("Please enter the values of a, b, and c as they appear in standard quadratic form.");
