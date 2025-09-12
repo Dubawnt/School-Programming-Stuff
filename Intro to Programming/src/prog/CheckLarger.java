@@ -38,6 +38,8 @@ public class CheckLarger {
 				input.nextLine();
 			}
 		} while (!valid1);
+		// close scanner
+		input.close();
 		// check larger
 		if (a == b) {
 			System.out.println("The numbers are equal.");
