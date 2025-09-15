@@ -14,7 +14,6 @@ public class BankAccount {
 		double withdrawal = 0.00;
 		boolean valid1 = false;
 		boolean valid2 = false;
-		boolean valid3 = false;
 		// decimal format
 		DecimalFormat currencyFormat = new DecimalFormat("$###,###,###,##0.00");
 		// Create a Scanner object
@@ -24,7 +23,6 @@ public class BankAccount {
 		do {
 			valid1 = false;
 			valid2 = false;
-			valid3 = false;
 
 			System.out.println("Please select an operation for your bank account (Input option number)");
 			System.out.println("1. Deposit");
@@ -51,8 +49,9 @@ public class BankAccount {
 						System.out.println("Please enter your deposit amount: ");
 						deposit = input.nextDouble();
 						System.out.println("You have deposited " + (currencyFormat.format(deposit)));
+						System.out.println();
 						balance = balance + deposit;
-						valid2 = true;
+						valid1 = true;
 						input.nextLine();
 					} catch (InputMismatchException e) {
 						System.out.println("Invalid input please use a number.");
@@ -67,31 +66,33 @@ public class BankAccount {
 							if ((balance - withdrawal) < 0) {
 								System.out.println("You cannot withdraw " + currencyFormat.format(withdrawal)
 										+ " as you only have " + currencyFormat.format(balance) + " available.");
+								System.out.println();
 								input.nextLine();
 							} else {
 								System.out.println("You have withdrawn " + (currencyFormat.format(withdrawal)));
 								balance = balance - withdrawal;
-								valid3 = true;
 								valid2 = true;
+								valid1 = true;
 								input.nextLine();
 							}
 						} catch (InputMismatchException e) {
 							System.out.println("Invalid input please use a number.");
 							input.nextLine();
 						}
-					} while (!valid3);
+					} while (!valid2);
 				}
 				// Balance Inquiry
 				else if (selection == 3) {
 					System.out.println("Your bank account balance is " + (currencyFormat.format(balance)));
-					valid2 = true;
+					System.out.println();
+					valid1 = true;
 				}
 				// Exit
 				else if (selection == 4) {
 					input.close();
 					System.exit(0);
 				}
-			} while (!valid2);
+			} while (!valid1);
 		} while (true);
 	}
 }
