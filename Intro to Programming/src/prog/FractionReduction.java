@@ -41,7 +41,7 @@ public class FractionReduction {
 			}
 		} while (!valid1);
 
-		//close scanner
+		// close scanner
 		input.close();
 		// check for proper or improper
 		if (numerator < denominator) {
