@@ -43,24 +43,52 @@ public class FractionReduction {
 
 		// close scanner
 		input.close();
+
+		// check gcf
+		int a = numerator;
+		int b = denominator;
+		int gcf;
+		int r = 0;
+		
+		if (a == 0) {
+			gcf = b;
+		}
+		else if (b == 0) {
+			gcf = a;
+		}
+		else {
+			do {
+				r = a % b;
+				if (!(r == 0)) {
+				a = b;
+				b = r;
+				}
+			} while (!(r == 0));
+			gcf = b;
+			
+		System.out.println("The gcf of " + numerator + " and " + denominator + " is " + gcf);
 		// check for proper or improper
-		if (numerator < denominator) {
+		if (Math.abs(numerator) < Math.abs(denominator)) {
 			proper = true;
 		}
 
 		// Outputs
 		if (proper) {
 			System.out.println("The fraction " + numerator + "/" + denominator + " is a proper fraction");
-		} else {
-			if ((numerator % denominator) == 0) {
-				System.out.println("The fraction " + numerator + "/" + denominator
-						+ " is an improper fraction which reduces to " + (numerator / denominator) + ".");
-			} else {
-				wholeMix = numerator / denominator;
-				fracMix = numerator - (wholeMix * denominator);
-				System.out.println("The fraction " + numerator + "/" + denominator
-						+ " is an improper fraction which reduces to " + wholeMix + "+" + fracMix + "/" + denominator);
+			if (!((gcf) == 1)) {
+				System.out.println("The fraction reduces to " + (numerator / gcf) + "/" + (denominator / gcf));
 			}
+		} else if ((numerator % denominator) == 0) {
+			System.out.println("The fraction " + numerator + "/" + denominator
+					+ " is an improper fraction which reduces to " + (numerator / denominator) + ".");
+		} else if (denominator == 0) {
+			System.out.println("This is Undefined!");
+		} else {
+			wholeMix = numerator / denominator;
+			fracMix = numerator - (wholeMix * denominator);
+			System.out.println("The fraction " + numerator + "/" + denominator
+					+ " is an improper fraction which reduces to " + wholeMix + "+" + (fracMix / gcf) + "/" + (denominator / gcf));
 		}
 	}
+}
 }
