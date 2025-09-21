@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 
 public class BankAccount {
 
-	 static void main(String[] ignoredArgs) {
+	 public static void main(String[] args) {
 		// declare variables
 		int selection = 0;
 		double balance = 0.00;
