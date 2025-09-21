@@ -6,14 +6,14 @@ import java.text.DecimalFormat;
 
 public class BankAccount {
 
-	public static void main(String[] args) {
+	 static void main(String[] ignoredArgs) {
 		// declare variables
 		int selection = 0;
 		double balance = 0.00;
-		double deposit = 0.00;
-		double withdrawal = 0.00;
-		boolean valid1 = false;
-		boolean valid2 = false;
+		double deposit;
+		double withdrawal;
+		boolean valid1 ;
+		boolean valid2 ;
 		// decimal format
 		DecimalFormat currencyFormat = new DecimalFormat("$###,###,###,##0.00");
 		// Create a Scanner object
