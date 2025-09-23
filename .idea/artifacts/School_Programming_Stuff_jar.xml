@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="School-Programming-Stuff:jar">
+    <output-path>$USER_HOME$/Documents/ProgrammingProjects/IntrotoProgramming/Release</output-path>
+    <root id="archive" name="School-Programming-Stuff.jar">
+      <element id="module-output" name="School-Programming-Stuff" />
+    </root>
+  </artifact>
+</component>
