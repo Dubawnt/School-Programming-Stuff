@@ -15,92 +15,86 @@ public class FractionReduction {
         boolean proper = false;
 
         // Create a Scanner object
-        Scanner input = new Scanner(System.in);
+        try (Scanner input = new Scanner(System.in)) {
 
-        // Test inputs for exceptions
-        do {
-            try {
-                System.out.println("Please enter the numerator:");
-                numerator = input.nextInt();
-                valid = true;
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input! Please use an integer.");
-                input.nextLine();
-            }
-        } while (!valid);
-        do {
-            try {
-                System.out.println("Please enter the denominator:");
-                denominator = input.nextInt();
-                valid1 = true;
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input! Please use an integer.");
-                input.nextLine();
-            }
-        } while (!valid1);
-
-        // close scanner
-        input.close();
+            // Test inputs for exceptions
+            do {
+                try {
+                    System.out.println("Please enter the numerator:");
+                    numerator = input.nextInt();
+                    valid = true;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input! Please use an integer.");
+                    input.nextLine();
+                }
+            } while (!valid);
+            do {
+                try {
+                    System.out.println("Please enter the denominator:");
+                    denominator = input.nextInt();
+                    valid1 = true;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input! Please use an integer.");
+                    input.nextLine();
+                }
+            } while (!valid1);
+        }
+        // Scanner closes automatically here
 
         //check for undefined
         if (denominator == 0) {
             System.out.println("This is Undefined!");
+            return;
         }
 
-        // check gcf
-        int a = Math.abs(numerator);
-        int b = Math.abs(denominator);
-        int gcf;
-        int r;
+        //normalize signs
+        int numeratorFinal = numerator;
+        int denominatorFinal = denominator;
 
-        if (a == 0) {
-            gcf = b;
-        } else if (b == 0) {
-            gcf = a;
+        if ((numerator < 0) && (denominator < 0)) {
+            numeratorFinal = numerator * -1;
+            denominatorFinal = denominator * -1;
+        } else if ((numerator >= 0) && (denominator < 0)) {
+            numeratorFinal = numerator * -1;
+            denominatorFinal = denominator * -1;
+        }
+
+        // check for proper or improper
+        if (Math.abs(numeratorFinal) < Math.abs(denominatorFinal)) {
+            proper = true;
+        }
+
+        // Outputs
+        if (proper) {
+            int gcfSimple = gcf(numeratorFinal, denominatorFinal);
+            System.out.println("The gcf of " + numerator + " and " + denominator + " is " + gcfSimple);
+            System.out.println("The fraction " + numerator + "/" + denominator + " is a proper fraction");
+            if (!((gcfSimple) == 1)) {
+                System.out.println("The fraction reduces to " + (numeratorFinal / gcfSimple) + "/" + (denominatorFinal / gcfSimple));
+            }
+        } else if ((numerator % denominator) == 0) {
+            System.out.println("The fraction " + numerator + "/" + denominator
+                    + " is an improper fraction which reduces to " + (numeratorFinal / denominatorFinal) + ".");
         } else {
-            do {
-                r = a % b;
-                if (!(r == 0)) {
-                    a = b;
-                    b = r;
-                }
-            } while (!(r == 0));
-            gcf = b;
-
-            //normalize signs
-            int numeratorFinal = numerator;
-            int denominatorFinal = denominator;
-
-            if ((numerator < 0) && (denominator < 0)) {
-                numeratorFinal = numerator * -1;
-                denominatorFinal = denominator * -1;
-            } else if ((numerator >= 0) && (denominator < 0)) {
-                numeratorFinal = numerator * -1;
-                denominatorFinal = denominator * -1;
-            }
-
-            //output gcf
-            System.out.println("The gcf of " + numerator + " and " + denominator + " is " + gcf);
-            // check for proper or improper
-            if (Math.abs(numerator) < Math.abs(denominator)) {
-                proper = true;
-            }
-
-            // Outputs
-            if (proper) {
-                System.out.println("The fraction " + numerator + "/" + denominator + " is a proper fraction");
-                if (!((gcf) == 1)) {
-                    System.out.println("The fraction reduces to " + (numeratorFinal / gcf) + "/" + (denominatorFinal / gcf));
-                }
-            } else if ((numerator % denominator) == 0) {
-                System.out.println("The fraction " + numerator + "/" + denominator
-                        + " is an improper fraction which reduces to " + (numeratorFinal / denominatorFinal) + ".");
-            } else {
-                int wholeMix = numeratorFinal / denominatorFinal;
-                int fracMix = numeratorFinal - (wholeMix * denominatorFinal);
-                System.out.println("The fraction " + numerator + "/" + denominator
-                        + " is an improper fraction which reduces to " + wholeMix + "+ " + (fracMix / gcf) + "/" + (denominatorFinal / gcf));
-            }
+            int wholeMix = Math.floorDiv(numeratorFinal, denominatorFinal);
+            int fracMix = Math.floorMod(numeratorFinal, denominatorFinal);
+            int gcfMixed = gcf(fracMix, denominatorFinal);
+            System.out.println("The fraction " + numerator + "/" + denominator
+                    + " is an improper fraction which reduces to " + wholeMix + " " + (fracMix / gcfMixed) + "/" + (Math.abs(denominatorFinal) / gcfMixed));
         }
+    }
+
+    // Euclidean GCF helper (must be outside main)
+    private static int gcf(int x, int y) {
+        x = Math.abs(x);
+        y = Math.abs(y);
+        if (x == 0) return y;
+        if (y == 0) return x;
+        while (y != 0) {
+            int r = x % y;
+            x = y;
+            y = r;
+        }
+        return x;
     }
 }
