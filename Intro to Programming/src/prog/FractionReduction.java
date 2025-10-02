@@ -46,6 +46,10 @@ public class FractionReduction {
             System.out.println("This is Undefined!");
             return;
         }
+        if (numerator == 0) {
+            System.out.println("This fraction reduces to 0");
+            return;
+        }
 
         //normalize signs
         int numeratorFinal = numerator;
