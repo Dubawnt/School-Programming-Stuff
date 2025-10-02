@@ -84,7 +84,7 @@ public class FractionReduction {
         }
     }
 
-    // Euclidean GCF helper (must be outside main)
+    // Euclidean GCF helper
     private static int gcf(int x, int y) {
         x = Math.abs(x);
         y = Math.abs(y);
