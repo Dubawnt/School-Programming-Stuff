@@ -11,11 +11,18 @@ public class BinaryToDecimal {
         String userInput = input.nextLine();
         input.close();
 
-        //Input Validation
+        //Input Length Validation
         int length = userInput.length();
         if (length != 4) {
             System.out.println("This string is not 4 digits long.");
             System.exit(0);
+        }
+        //Input Binary Validation
+        for (int charVal = 0; charVal < 4; charVal++) {
+            if (userInput.charAt(charVal) != '0' && userInput.charAt(charVal) != '1') {
+                System.out.println("This is not a binary string.");
+                System.exit(0);
+            }
         }
 
         //conversion to decimal
