@@ -25,7 +25,7 @@ public class BigFibonacci {
         int target = input.nextInt();
         input.close();
 
-        //print array
+        //print Fibonacci
         System.out.println(Fibonacci(target));
     }
 }
