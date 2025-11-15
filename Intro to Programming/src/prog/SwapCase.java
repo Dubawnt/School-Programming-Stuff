@@ -1,27 +1,28 @@
 package prog;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class SwapCase {
 
     public static String SwapCase(String x) {
-        String result = x;
-        String build = null;
-        for (int i=0; i<result.length(); i++){
-            if (Character.getNumericValue(result.charAt(i)) >= 65 || Character.getNumericValue(result.charAt(i)) <= 90) {
-                build.concat(String.valueOf(result.substring(i)) + 32);
+        String result = "";
+        String build = "";
+        for (int i=0; i<x.length(); i++){
+            build = x.substring(i, i+1);
+            if (build.charAt(0) >= 65 && build.charAt(0) <= 90) {
+                build = build.toLowerCase();
+                result = result.concat(build);
             }
-            else if (Character.getNumericValue(result.charAt(i)) >= 97 || Character.getNumericValue(result.charAt(i)) <= 122) {
-                build.concat(String.valueOf(result.substring(i)) - 32);
+            else if (build.charAt(0) >= 97 && build.charAt(0) <= 122) {
+                build = build.toUpperCase();
+                result = result.concat(build);
             }
             else {
-                build.concat(result.substring(i, i+1));
+                result = result.concat(build);
             }
         }
-        return build;
+        return result;
     }
-
     public static void main(String[] args){
         //open scanner
         Scanner input = new Scanner(System.in);
